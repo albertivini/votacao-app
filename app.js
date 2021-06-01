@@ -20,6 +20,8 @@ const participante2Router = require('./routes/participante2')
 const participante3Router = require('./routes/participante3')
 const votarnovamenteRouter = require('./routes/votarnovamente')
 
+const funcao = require('./utils/functions')
+
 const app = express();
 
 // view engine setup
@@ -36,7 +38,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Configuração do Passport
 
 const MongoStore = require('connect-mongo')
-require('./auth')(passport)
+require('./utils/auth')(passport)
 app.use(session({
   store: MongoStore.create({
     db: process.env.MONGO_DB,
@@ -59,23 +61,13 @@ app.use('/login', loginRouter);
 app.use('/forgot', forgotRouter);
 app.use('/off', erroRouter)
 app.use('/votacao', votacaoRouter);
-app.use('/users', authenticationMiddleware, usersRouter);
-app.use('/autenticado', authenticationMiddleware, autenticadoRouter)
-app.use('/admin', authenticationMiddleware, adminRouter)
-app.use('/participante1', authenticationMiddleware, participante1Router)
-app.use('/participante2', authenticationMiddleware, participante2Router)
-app.use('participante3', authenticationMiddleware, participante3Router)
-app.use('/votarnovamente', authenticationMiddleware, votarnovamenteRouter)
-
-
-
-// bloquea usuario nao autenticado
-function authenticationMiddleware(req, res, next) {
-  if (req.isAuthenticated() && require('./permissions')(req))
-  // se o usuario tiver autenticado e a funcao do permissions der TRUE ele consegue seguir adiante, se não ele é direcionado para /off
-  return next()
-  res.redirect('/off')
-}
+app.use('/users', funcao.authenticationMiddleware, usersRouter);
+app.use('/autenticado', funcao.authenticationMiddleware, autenticadoRouter)
+app.use('/admin', funcao.authenticationMiddleware, adminRouter)
+app.use('/participante1', funcao.authenticationMiddleware, participante1Router)
+app.use('/participante2', funcao.authenticationMiddleware, participante2Router)
+app.use('participante3', funcao.authenticationMiddleware, participante3Router)
+app.use('/votarnovamente', funcao.authenticationMiddleware, votarnovamenteRouter)
 
 // error handler
 app.use(function(err, req, res, next) {
