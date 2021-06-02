@@ -42,7 +42,7 @@
 
                 <ul class="login">
                     <li><a target="_blank" href="https://assine.globo.com/globocom/index.jsp?origemId=148">Assine já</a></li>
-                    <li><a target="_blank" href="login.html">Entrar</a></li>
+                    <li><a target="_blank" href="/login">Entrar</a></li>
                 </ul>
             </nav>
 
@@ -67,11 +67,6 @@
                 </div>
             </section>
         </header>
-
-
-
-
-
 
         <div id="all-body" class="menu-closed"></div>
         <nav id="sidebar" class="sidebar-closed">
@@ -109,22 +104,31 @@
             </ul>
         </nav>
 
-        <title>
-            <%= title %>
-        </title>
-        <p>Participante 1</p>
-        <form method="post" action="/participante1">
-            <input type="submit" value="Votar" />
+        <div class="container">
+            <title>
+                <%= title %>
+            </title>
 
-            <p>Participante 2</p>
+            <form method="post" action="/participante1">
+                <input type="submit" value="Participante 1" />
+                <img src="/images/1.jpg" alt="part1">
+            </form>
+
+
             <form method="post" action="/participante2">
-                <input type="submit" value="Votar" />
+                <input type="submit" value="Participante 2" />
+                <img src="/images/2.jpg" alt="part2">
+            </form>
 
-                <p>Participante 3</p>
-                <form method="post" action="/participante3">
-                    <input type="submit" value="Votar" />
 
-                    <script src="/javascripts/main.js"></script>
+            <form method="post" action="/participante3">
+                <input type="submit" value="Participante 3" />
+                <img src="/images/3.jpg" alt="part3">
+            </form>
+
+        </div>
+
+        <script src="/javascripts/main.js"></script>
     </body>
 
 </html>
