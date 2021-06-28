@@ -1,6 +1,6 @@
-import db from '../db'
+const Vote = require('../models/Vote')
 
-export default {
+module.exports = {
     async votar (req, res, next) {
         res.render('votacao', {title: "Paredão BBBXX: Vote para eliminar. Participante1, Participante2 ou Participante3?"})
     },
@@ -13,7 +13,7 @@ export default {
         
         data = Date.now()
 
-        db.adicionaVoto1(data)
+        Vote.adicionaVoto1(data)
         
         res.redirect('/votarnovamente')
     },
@@ -22,7 +22,7 @@ export default {
         
         data = Date.now()
 
-        db.adicionaVoto2(data)
+        Vote.adicionaVoto2(data)
         
         res.redirect('/votarnovamente')
     },
@@ -31,7 +31,7 @@ export default {
         
         data = Date.now()
 
-        db.adicionaVoto3(data)
+        Vote.adicionaVoto3(data)
         
         res.redirect('/votarnovamente')
     }

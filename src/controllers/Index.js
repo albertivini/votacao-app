@@ -1,6 +1,5 @@
-import db from '../db'
 
-export default {
+module.exports = {
     async inicio (req, res, next) {
         res.render('index', { title: 'Express' });
     }

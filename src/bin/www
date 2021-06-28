@@ -15,7 +15,7 @@ const mongoClient = require("mongodb").MongoClient
 // busca cliente mongo
 
 try {
-  const conn = await mongoClient.connect(process.env.MONGO_CONNECTION, { useUnifiedTopology: true});
+  const conn = await mongoClient.connect(process.env.MONGO_CONNECTION, { useUnifiedTopology: true });
   console.log("Conectou no banco de dados.")
   global.db = conn.db(process.env.MONGO_DB);
   // inicia variavel global.db para n precisar dar require no banco sempre

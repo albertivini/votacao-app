@@ -1,19 +1,11 @@
-import passport from 'passport';
+const passport = require('passport')
 
-export default {
+module.exports = {
     async mostra (req, res, next) {
         if(req.query.fail)
         res.render('login', {message: 'Usuario e/ou senha incorretos!'})
     else
         res.render('login', {message: null })
-    },
-
-    async autentica (req, res, next) {
-        passport.authenticate('local', {
-            successRedirect: '/users',
-            failureRedirect: '/login?fail=true'
-        })
-        // autentica o login   
     },
 
     async logout (req, res, next) {

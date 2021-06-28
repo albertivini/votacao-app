@@ -1,3 +1,9 @@
 <h1>
-    <%= count %> 
+    <p> Lista de Usuários </p>
+      <% users.forEach((user) => { %>
+          <p><%=  user.username %> </p>
+          <p><%=  user.email %> </p>
+          <p><%=  user.profile %> </p>
+      <% }) %> 
+      <p></p>
 </h1>
