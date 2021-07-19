@@ -2,7 +2,7 @@ const Vote = require('../models/Vote')
 
 module.exports = {
     async votar (req, res, next) {
-        res.render('votacao', {title: "Paredão BBBXX: Vote para eliminar. Participante1, Participante2 ou Participante3?"})
+        res.render('votacao', {title: "Paredão BBBXX: Vote para eliminar. Participante1, Participante2 ou Participante3?", part1: "Nick", part2: "Eva", part3: "Fumaça"})
     },
 
     async votarNovamente (req, res, next) {
